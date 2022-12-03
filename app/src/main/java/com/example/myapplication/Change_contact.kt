@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 
 
 class Change_contact: AppCompatActivity() {
@@ -16,7 +17,12 @@ class Change_contact: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.change_contact)
-        title = "Изменение контакта"
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
+
+        setSupportActionBar(toolbar)
+
+        title = "Изменить"
+
         val dbHelper = DBHelper(this)
         val button = findViewById<Button>(R.id.button)
 
@@ -41,8 +47,7 @@ class Change_contact: AppCompatActivity() {
             val first_name = editTextName.text.toString()
 
             val phone = editTextPhone.text.toString()
-            //val cool = dbHelper.update(id.toString().toLong(),title,name,phone)
-            list.add(Todo(id.toString().toLong(),last_name,first_name,phone))
+            dbHelper.update(id.toString().toLong(),last_name,first_name,phone)
             val intent_change = Intent(this@Change_contact, MainActivity::class.java)
             startActivity(intent_change)
         }

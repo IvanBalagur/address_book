@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 
 
 class Add_contact_menu: AppCompatActivity() {
@@ -14,7 +15,11 @@ class Add_contact_menu: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.addendum_contact)
-        title = "Добавление контакта"
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
+
+        setSupportActionBar(toolbar)
+
+        title = "Добавить контакт"
         val dbHelper = DBHelper(this)
         val editText = findViewById<EditText>(R.id.editTextTextMultiLine)
         val editTextName = findViewById<EditText>(R.id.editTextTextMultiLine2)
